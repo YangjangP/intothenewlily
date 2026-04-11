@@ -352,6 +352,17 @@
             .mobile-br {
                 display: inline; /* 모바일에서만 줄바꿈 활성화 */
             }
+            /* 갤러리 모달 모바일 버튼 최적화 */
+            #btn-prev, #btn-next {
+                font-size: 24px !important;
+                padding: 10px !important;
+            }
+            #btn-close-gallery {
+                font-size: 24px !important;
+                padding: 10px !important;
+                top: 5px !important;
+                right: 5px !important;
+            }
         }
 
         /* 모달 (팝업) 스타일 */
@@ -525,7 +536,7 @@
 
                 <!-- 경화루 About 안내 배너 (모바일 전용 줄바꿈 추가) -->
                 <div class="ad-banner about-res" onclick="openModal('[경화루] 르포 기사 페이지로 이동하시겠습니까?', 'https://yangjangp.github.io/scrap-paper-kr/')">
-                    [INFO] LA 차이나타운 정통 광동식 중화요리 <br class="mobile-br"> 『경화루』르포 발간
+                    [INFO] LA 차이나타운 중화요리 대가 <br class="mobile-br"> 『경화루』르포 발간
                 </div>
             </fieldset>
 
@@ -549,14 +560,15 @@
                     </td>
                     <td class="post-content">
                         오늘 뉴스 뜬 거 보셨나요. 결국 수사 종결됐네요...<br>
-                        진짜 사망한 걸까요? <거리 너머의 그림자>에서 그 축축한 빗속 총격전 씬은 아직도 제 인생 명장면인데.<br>
+                        진짜 사망한 걸까요? <br>
+                        <거리 너머의 그림자>의 빗속 총격전 씬은 아직도 제 인생 명장면인데...<br>
                         이제 더 이상 그의 신작을 볼 수 없다는 게 안 믿겨집니다.
                         <span class="post-date">199X-11-04 23:14:02</span>
                     </td>
                 </tr>
                 <tr class="theme-a-only">
                     <td class="post-author">
-                        <b>익명_77</b><br>
+                        <b>익명_07</b><br>
                         (14.32.***.***)
                     </td>
                     <td class="post-content">
@@ -568,13 +580,13 @@
                 </tr>
                 <tr class="theme-a-only">
                     <td class="post-author">
-                        <b>C07</b><br>
+                        <b>C07 후속작 제작위원회</b><br>
                         (114.16.***.***)
                     </td>
                     <td class="post-content">
                         사실 난 <스묄라의 얼음>을 가장 좋아했어.<br>
-                        이 작품은 재평가 받아야 한다고<br>
-                        본인이 이해를 못했다고 작품성이 떨어지는건 아니란말이지
+                        망작이라고 하는 것들은 얼간이들이 분명해<br>
+                        본인이 이해를 못했다고 작품성이 떨어지는건 아니란 말이지
                         <span class="post-date">199X-11-04 23:36:12</span>
                     </td>
                 </tr>
@@ -585,8 +597,8 @@
                     </td>
                     <td class="post-content">
                         C07 급발진하네 <br>
-                        누아르 감독 초기 작품이 메이저인 세계선에 살고싶진 않아 <br>
-                        그치만 사실 그 때의 작품들이 그립기도 했어. 내 닉네임 좀 보라고. 
+                        누아르 감독 초기 작품이 메이저인 세계선에 살고싶진 않거든? <br>
+                        그래도 그 때의 작품들이 그립기도 해. 내 닉네임 좀 보라고. 
                         <span class="post-date">199X-11-04 23:41:53</span>
                     </td>
                 </tr>
@@ -597,7 +609,7 @@
                     </td>
                     <td class="post-content">
                         <span class="blink-text">▶▶▶진실을 은폐하지 마라◀◀◀</span><br>
-                        의도적으로 흔적을 지우고 급하게 유언을 준비했다는 관계자 증언 확보<br>
+                        누아르 감독이 최근 급하게 유언장을 준비했다는 관계자 증언 확보<br>
                         실종인가? 혹은 감독의 자작극인가? <br>
                         <!-- 채널 1 전용 갤러리 호출 (A 파라미터 전달) -->
                         <a href="#" onclick="openGallery(event, 'A')">>> [幾時你回來] 샘플 확인하기</a>
@@ -641,9 +653,9 @@
                         (10.0.***.***)
                     </td>
                     <td class="post-content">
-                        방금 감독님 컨펌 떨어진 메인 빌런 무기 소품 스케치 시안 공유합니다. 외부 유출 절대 금지!! 비밀번호는 평소 쓰던 그거 아시죠?<br>
+                        방금 감독님 컨펌 떨어진 메인 컨셉 스케치 시안 공유합니다. 외부 유출 절대 금지!! 비밀번호는 평소 쓰던 그거 아시죠?<br>
                         <!-- 채널 2 전용 갤러리 호출 (B 파라미터 전달) -->
-                        <a href="#" onclick="openGallery(event, 'B')">>> [보안 문서] 소품_시안_최종의최종.png (클릭)</a>
+                        <a href="#" onclick="openGallery(event, 'B')">>> [보안 문서] 시안_최종의최종.png (클릭)</a>
                         <span class="post-date">192X-12-03 20:42:11</span>
                     </td>
                 </tr>
@@ -696,7 +708,7 @@
     <div id="gallery-modal" onclick="closeGallery()">
         
         <!-- 닫기 버튼 (우측 상단) -->
-        <div style="position: absolute; top: 15px; right: 20px; color: white; font-size: 35px; cursor: pointer; z-index: 10001; text-shadow: 2px 2px 4px #000; font-family: sans-serif; padding: 10px;">✕</div>
+        <div id="btn-close-gallery" style="position: absolute; top: 15px; right: 20px; color: white; font-size: 35px; cursor: pointer; z-index: 10001; text-shadow: 2px 2px 4px #000; font-family: sans-serif; padding: 10px;" onclick="closeGallery()">✕</div>
 
         <!-- 이전 버튼 (클릭 시 모달이 닫히지 않도록 이벤트 전파 중단) -->
         <div id="btn-prev" onclick="event.stopPropagation(); changeGalleryPage(-1)" style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: white; font-size: 40px; cursor: pointer; z-index: 10001; text-shadow: 2px 2px 4px #000; user-select: none; padding: 15px;">◀</div>
