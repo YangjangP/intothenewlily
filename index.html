@@ -301,6 +301,11 @@
             transform: translate(1px, 1px);
         }
 
+        /* 모바일에서만 동작하는 줄바꿈 클래스 */
+        .mobile-br {
+            display: none;
+        }
+
         /* 모바일 반응형 최적화 */
         @media (max-width: 600px) {
             body {
@@ -343,6 +348,9 @@
             input[type="text"], textarea {
                 width: 100% !important;
                 font-size: 13px;
+            }
+            .mobile-br {
+                display: inline; /* 모바일에서만 줄바꿈 활성화 */
             }
         }
 
@@ -466,8 +474,8 @@
     <!-- 브라우저 창 느낌의 래퍼 -->
     <div class="window">
         <div class="title-bar">
-            <span class="theme-a-only">Netscape Navigator - Film NewArt BBS</span>
-            <span class="theme-b-only">Netscape Navigator - Film NewArt BBS</span>
+            <span class="theme-a-only">Film NewArt BBS</span>
+            <span class="theme-b-only">Film NewArt BBS</span>
             <div class="title-bar-controls">
                 <div class="title-bar-btn">_</div>
                 <div class="title-bar-btn">□</div>
@@ -495,9 +503,9 @@
             <fieldset style="border: 2px groove #ffffff; margin-bottom: 20px; padding: 10px;">
                 <legend style="color: #000080; font-weight: bold;">[ SPONSOR LINKS ]</legend>
                 
-                <!-- 경화루 식당 최상단 배너 -->
+                <!-- 경화루 식당 최상단 배너 (모바일 전용 줄바꿈 추가) -->
                 <div class="ad-banner restaurant" onclick="openModal('광동식 중화요리 [경화루] 선입금/수요조사 페이지로 이동하시겠습니까?', 'https://yangjangp.github.io/scrap-paper-kr/')">
-                    [廣東菜館] 광동식 중화요리 경화루 ☞ 선입금/수요조사 LINK 
+                    [廣東菜館] 광동식 중화요리 경화루 <br class="mobile-br"> ☞ 선입금/수요조사 LINK 
                 </div>
 
                 <div class="ad-container">
@@ -509,9 +517,9 @@
                     </div>
                 </div>
 
-                <!-- 경화루 About 안내 배너 (최하단) -->
+                <!-- 경화루 About 안내 배너 (모바일 전용 줄바꿈 추가) -->
                 <div class="ad-banner about-res" onclick="openModal('정통 중화요리 [경화루] 르포 기사 페이지로 이동하시겠습니까?', 'https://yangjangp.github.io/scrap-paper-kr/')">
-                    [INFO] LA 차이나타운 정통 광동식 중화요리 『경화루』르포 발간
+                    [INFO] LA 차이나타운 정통 광동식 중화요리 <br class="mobile-br"> 『경화루』르포 발간
                 </div>
             </fieldset>
 
@@ -548,7 +556,7 @@
                     <td class="post-content">
                         솔직히 <혼돈> 결말부 반전은 당시 충격 그 자체였지.<br>
                         근데 난 아직도 안 믿음. 시신을 못 찾았잖아?<br>
-                        어쩌면 자기 영화처럼 신분 세탁하고 어딘가 숨어 살고 있을지도 모름 ㄷㄷ
+                        어쩌면 자기 영화처럼 신분 세탁하고 어딘가 숨어 살고 있을지도 몰라
                         <span class="post-date">199X-11-04 23:30:15</span>
                     </td>
                 </tr>
