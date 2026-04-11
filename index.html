@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netscape Navigator - [Film Noir Archives]</title>
+    <!-- 90년대 레트로 픽셀 폰트 (둥근모꼴) 로드 -->
+    <link href="https://cdn.jsdelivr.net/gh/neodgm/neodgm-webfont@latest/neodgm/style.css" rel="stylesheet">
+    <style>
+        /* 90년대 웹 감성을 위한 기본 스타일 */
+        body {
+            background-color: #c0c0c0; /* 윈도우 95 기본 배경색 */
+            background-image: url('data:image/svg+xml;utf8,<svg width="4" height="4" xmlns="http://www.w3.org/2000/svg"><rect width="4" height="4" fill="%23c0c0c0"/><rect width="1" height="1" fill="%23a0a0a0"/></svg>');
+            font-family: 'DungGeunMo', 'Gulim', '굴림', 'MS Sans Serif', monospace;
+            color: #000;
+            margin: 0;
+            padding: 20px;
+            font-size: 16px;
+            line-height: 1.4;
+        }
+
+        a {
+            color: #0000ff;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        a:visited {
+            color: #800080;
+        }
+
+        /* 윈도우 95 스타일 창 */
+        .window {
+            background-color: #c0c0c0;
+            border-top: 2px solid #ffffff;
+            border-left: 2px solid #ffffff;
+            border-right: 2px solid #808080;
+            border-bottom: 2px solid #808080;
+            padding: 2px;
+            margin-bottom: 20px;
+            box-shadow: 1px 1px 0px #000;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .title-bar {
+            background-color: #000080; /* 진한 파란색 타이틀바 */
+            color: #ffffff;
+            padding: 3px 5px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            letter-spacing: 1px;
+        }
+
+        .title-bar-controls {
+            display: flex;
+            gap: 2px;
+        }
+
+        .title-bar-btn {
+            background-color: #c0c0c0;
+            border-top: 1px solid #ffffff;
+            border-left: 1px solid #ffffff;
+            border-right: 1px solid #000000;
+            border-bottom: 1px solid #000000;
+            width: 16px;
+            height: 14px;
+            font-size: 10px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: black;
+            cursor: pointer;
+            box-shadow: inset -1px -1px #808080;
+        }
+
+        .title-bar-btn:active {
+            border-top: 1px solid #000000;
+            border-left: 1px solid #000000;
+            border-right: 1px solid #ffffff;
+            border-bottom: 1px solid #ffffff;
+            box-shadow: none;
+            padding-top: 1px;
+            padding-left: 1px;
+        }
+
+        .window-content {
+            padding: 10px;
+        }
+
+        /* 투박한 90년대 버튼 */
+        button, .retro-btn {
+            background-color: #c0c0c0;
+            border-top: 2px solid #ffffff;
+            border-left: 2px solid #ffffff;
+            border-right: 2px solid #808080;
+            border-bottom: 2px solid #808080;
+            padding: 4px 10px;
+            font-family: inherit;
+            font-size: 14px;
+            cursor: pointer;
+            box-shadow: 1px 1px 0px #000;
+        }
+
+        button:active, .retro-btn:active {
+            border-top: 2px solid #808080;
+            border-left: 2px solid #808080;
+            border-right: 2px solid #ffffff;
+            border-bottom: 2px solid #ffffff;
+            box-shadow: none;
+            transform: translate(1px, 1px);
+        }
+
+        /* 게시판 테이블 스타일 */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #ffffff;
+            border: 2px inset #ffffff;
+        }
+
+        th, td {
+            border: 1px solid #c0c0c0;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #e0e0e0;
+            color: #000;
+            border-bottom: 2px solid #808080;
+            font-weight: normal;
+        }
+
+        .post-author {
+            width: 120px;
+            background-color: #f0f0f0;
+            vertical-align: top;
+            font-size: 14px;
+        }
+
+        .post-content {
+            vertical-align: top;
+        }
+
+        .post-date {
+            font-size: 12px;
+            color: #808080;
+            margin-top: 5px;
+            display: block;
+        }
+
+        /* 텍스트 입력창 (인셋 효과) */
+        input[type="text"], textarea {
+            font-family: inherit;
+            background-color: #ffffff;
+            border-top: 2px solid #808080;
+            border-left: 2px solid #808080;
+            border-right: 2px solid #ffffff;
+            border-bottom: 2px solid #ffffff;
+            padding: 4px;
+            width: calc(100% - 12px);
+            box-sizing: border-box;
+        }
+
+        /* 마키(흐르는 텍스트) 시뮬레이션 */
+        .marquee {
+            background-color: #000;
+            color: #00ff00;
+            padding: 4px;
+            overflow: hidden;
+            white-space: nowrap;
+            margin-bottom: 15px;
+            border: 2px inset #ffffff;
+        }
+        
+        .marquee span {
+            display: inline-block;
+            animation: marquee 15s linear infinite;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* 광고 배너 구역 */
+        .ad-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 10px; /* 20px에서 10px로 간격 축소하여 위아래 배너와 여백 통일 */
+        }
+
+        /* 광고 배너 스타일 (깜빡임, 화려한 색상) */
+        .ad-banner {
+            flex: 1;
+            display: block;
+            text-align: center;
+            padding: 15px 5px;
+            text-decoration: none;
+            font-weight: bold;
+            border: 3px outset #fff;
+            cursor: pointer;
+            text-shadow: 1px 1px 0 #000;
+        }
+
+        .ad-banner:active {
+            border-style: inset;
+        }
+
+        .ad-banner.zine {
+            background: linear-gradient(45deg, #ff00ff, #0000ff);
+            color: yellow;
+            animation: blinkBg 2s infinite;
+        }
+
+        .ad-banner.goods {
+            background: linear-gradient(45deg, #ffff00, #ff0000);
+            color: white;
+            animation: blinkBorder 0.5s infinite;
+        }
+
+        @keyframes blinkBg {
+            0%, 100% { background: #000080; color: #00ff00; }
+            50% { background: #ff00ff; color: yellow; }
+        }
+
+        @keyframes blinkBorder {
+            0%, 100% { border-color: red; }
+            50% { border-color: yellow; }
+        }
+
+        /* 깜빡이는 텍스트 */
+        .blink-text {
+            animation: blinker 1s linear infinite;
+            color: red;
+            font-weight: bold;
+        }
+
+        @keyframes blinker {
+            50% { opacity: 0; }
+        }
+
+        /* 방문자 카운터 */
+        .hit-counter {
+            text-align: center;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            font-size: 20px;
+            background-color: black;
+            color: red;
+            display: inline-block;
+            padding: 2px 5px;
+            border: 2px inset #ffffff;
+            letter-spacing: 2px;
+        }
+
+        hr {
+            border: 0;
+            border-top: 2px solid #808080;
+            border-bottom: 2px solid #ffffff;
+            margin: 15px 0;
+        }
+
+        /* 경화루 광고 배너 (최상단) */
+        .ad-banner.restaurant {
+            background: linear-gradient(to bottom, #ff0000, #800000);
+            color: #ffff00;
+            margin-bottom: 10px;
+            border: 3px outset #ff0000;
+            animation: blinkRes 1s infinite;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        @keyframes blinkRes {
+            0%, 100% { border-color: #ffff00; }
+            50% { border-color: #ff0000; }
+        }
+
+        /* 경화루 About 배너 (하단 추가) */
+        .ad-banner.about-res {
+            background-color: #c0c0c0;
+            color: #000;
+            border-top: 2px solid #ffffff;
+            border-left: 2px solid #ffffff;
+            border-right: 2px solid #808080;
+            border-bottom: 2px solid #808080;
+            width: 100%;
+            box-sizing: border-box;
+            text-shadow: none; /* 다른 투박한 버튼들처럼 글자 그림자 제거 */
+        }
+        .ad-banner.about-res:active {
+            border-top: 2px solid #808080;
+            border-left: 2px solid #808080;
+            border-right: 2px solid #ffffff;
+            border-bottom: 2px solid #ffffff;
+            transform: translate(1px, 1px);
+        }
+
+        /* 모바일 반응형 최적화 */
+        @media (max-width: 600px) {
+            body {
+                padding: 5px;
+            }
+            .window {
+                margin-bottom: 10px;
+            }
+            .ad-container {
+                flex-direction: column;
+            }
+            .post-author {
+                width: 70px;
+                font-size: 12px;
+            }
+            .post-content {
+                font-size: 14px;
+                word-break: break-word;
+            }
+            .hit-counter {
+                font-size: 16px;
+            }
+            input[type="text"], textarea {
+                width: 100% !important;
+            }
+        }
+
+        /* 모달 (팝업) 스타일 */
+        #custom-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* 갤러리 모달 전용 스타일 추가 */
+        #gallery-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* 비활성화된 버튼 스타일 */
+        button:disabled {
+            color: #888;
+            cursor: not-allowed;
+            border-top: 2px solid #ffffff;
+            border-left: 2px solid #ffffff;
+            border-right: 2px solid #808080;
+            border-bottom: 2px solid #808080;
+            box-shadow: none;
+            transform: none !important;
+        }
+
+        /* === 테마 B (내용 전환용 클래스 유지, 디자인 통일) === */
+        .theme-a-only { display: block; }
+        .theme-b-only { display: none; }
+        body.theme-b .theme-a-only { display: none; }
+        body.theme-b .theme-b-only { display: block; }
+        
+        tr.theme-a-only { display: table-row; }
+        tr.theme-b-only { display: none; }
+        body.theme-b tr.theme-a-only { display: none; }
+        body.theme-b tr.theme-b-only { display: table-row; }
+
+        /* === 초기 접속 게이트 화면 === */
+        #gate-screen {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: #000;
+            z-index: 100000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .gate-box {
+            background-color: #c0c0c0;
+            border-top: 2px solid #ffffff;
+            border-left: 2px solid #ffffff;
+            border-right: 2px solid #808080;
+            border-bottom: 2px solid #808080;
+            padding: 2px;
+            width: 90%;
+            max-width: 450px;
+        }
+        .gate-title {
+            background-color: #000080;
+            color: white;
+            padding: 4px 8px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        .gate-content {
+            padding: 20px;
+            text-align: center;
+            color: #000;
+        }
+        .gate-btn {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px; /* 버튼 간격 10px로 통일 */
+            padding: 12px 10px;
+            text-align: left;
+            font-size: 15px;
+            font-weight: bold;
+        }
+        /* 개별 버튼 전용 색상 및 하단 여백 제거 */
+        .gate-btn.a-btn { color: #000080; }
+        .gate-btn.b-btn { color: #000080; }
+    </style>
+</head>
+<body class="theme-a">
+
+    <!-- 초기 접속 게이트 화면 -->
+    <div id="gate-screen">
+        <div class="gate-box">
+            <div class="gate-title">SELECT SYSTEM TERMINAL</div>
+            <div class="gate-content">
+                <p style="margin-top: 0; margin-bottom: 15px;">접속할 채널을 선택해 주십시오.</p>
+                <!-- CSS 공통 태그인 button을 사용하여 디자인 자동 상속 -->
+                <button class="gate-btn a-btn" onclick="enterSite('A')">
+                    ▶ [채널 1] Film NewArt BBS<br><span style="font-size: 12px; font-weight: normal; color: #333;">(실종 사건 추모 및 기록실)</span>
+                </button>
+                <button class="gate-btn b-btn" onclick="enterSite('B')">
+                    ▶ [채널 2] Project OOO <br><span style="font-size: 12px; font-weight: normal; color: #333;">(신작 대기조)</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 테마 전환 토글 버튼 (여백 및 버튼 디자인 통일) -->
+    <div style="max-width: 800px; margin: 0 auto 10px auto; text-align: right;">
+        <button onclick="toggleTheme()" id="theme-btn">
+            [ 전환 : 신작 프로젝트 게시판 ]
+        </button>
+    </div>
+
+    <!-- 브라우저 창 느낌의 래퍼 -->
+    <div class="window">
+        <div class="title-bar">
+            <span class="theme-a-only">Netscape Navigator - Film NewArt BBS</span>
+            <span class="theme-b-only">Netscape Navigator - Film NewArt BBS</span>
+            <div class="title-bar-controls">
+                <div class="title-bar-btn">_</div>
+                <div class="title-bar-btn">□</div>
+                <div class="title-bar-btn">X</div>
+            </div>
+        </div>
+        
+        <div class="window-content">
+            
+            <!-- 공지 마키 (테마별 분리) -->
+            <div class="marquee theme-a-only">
+                <span>[공지] 환영합니다. 본 게시판은 익명으로 운영됩니다. /// [속보] N감독 실종 3주차, 변호인 요청으로 경찰 수사 공식 종결. 사망으로 간주... /// 욕설 및 비방글은 통보 없이 삭제됩니다.</span>
+            </div>
+            <div class="marquee theme-b-only">
+                <span>[공지] 환영합니다. 본 게시판은 익명으로 운영됩니다. /// [속보] N감독 신작 제작 착수, 야간순찰자와의 협업 기대 /// 욕설 및 비방글은 통보 없이 삭제됩니다.</span>
+            </div>
+
+            <div style="text-align: center; margin-bottom: 10px;">
+                <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='60'><rect width='200' height='60' fill='black'/><text x='10' y='35' fill='white' font-family='monospace' font-size='20' font-weight='bold'>FILM-NEWART</text><text x='10' y='50' fill='red' font-family='monospace' font-size='12'>UNDERGROUND BBS</text></svg>" alt="BBS Logo">
+                <br>
+                당신은 이 페이지의 <div class="hit-counter">019912</div> 번째 방문객입니다.
+            </div>
+
+            <!-- 스폰서 배너 영역 (회지 B, 굿즈 C 홍보) -->
+            <fieldset style="border: 2px groove #ffffff; margin-bottom: 20px; padding: 10px;">
+                <legend style="color: #000080; font-weight: bold;">[ SPONSOR LINKS ]</legend>
+                
+                <!-- 경화루 식당 최상단 배너 -->
+                <div class="ad-banner restaurant" onclick="openModal('광동식 중화요리 [경화루] 선입금/수요조사 페이지로 이동하시겠습니까?', 'https://yangjangp.github.io/scrap-paper-kr/')">
+                    [廣東菜館] 광동식 중화요리 경화루 ☞ 선입금/수요조사 LINK 
+                </div>
+
+                <div class="ad-container">
+                    <div class="ad-banner zine" onclick="openModal('회지 [B] 샘플 페이지로 이동하시겠습니까?', 'https://your-zine-b-link.com')">
+                        ★★ NewArt 회지 컬렉션 ★★<br>비공식 회지 『B』 한정 수량!!
+                    </div>
+                    <div class="ad-banner goods" onclick="openModal('굿즈 [C] 샘플 페이지로 이동하시겠습니까?', 'https://your-goods-c-link.com')">
+                        ★★ NewArt 굿즈 컬렉션 ★★<br>비공식 굿즈 『C』 한정 수량!!
+                    </div>
+                </div>
+
+                <!-- 경화루 About 안내 배너 (최하단) -->
+                <div class="ad-banner about-res" onclick="openModal('정통 중화요리 [경화루] 안내 페이지로 이동하시겠습니까?', 'https://yangjangp.github.io/scrap-paper-kr/')">
+                    [INFO] LA 차이나타운 정통 광동식 중화요리 『경화루』르포 발간
+                </div>
+            </fieldset>
+
+            <div class="theme-a-only" style="background-color: #000080; color: white; padding: 5px; font-weight: bold; margin-bottom: 5px;">
+                Thread: [R.I.P?] 실종된 N감독에 대한 추억... 작품 재평가 열풍?
+            </div>
+            <div class="theme-b-only" style="background-color: #000080; color: white; padding: 5px; font-weight: bold; margin-bottom: 5px;">
+                Thread: [NEW] N감독 신작 &lt;프로젝트: OOO&gt; 응원 게시판
+            </div>
+
+            <!-- 게시판 내용 -->
+            <table id="comments-table">
+                <tr>
+                    <th style="width: 120px;">작성자 (IP)</th>
+                    <th>내용</th>
+                </tr>
+                <tr class="theme-a-only">
+                    <td class="post-author">
+                        <b>NoirFan99</b><br>
+                        (203.252.***.***)
+                    </td>
+                    <td class="post-content">
+                        오늘 뉴스 뜬 거 보셨나요. 결국 수사 종결됐네요...<br>
+                        진짜 사망한 걸까요? 그의 데뷔작 <붉은 밤의 골목>에서 그 축축한 빗속 총격전 씬은 아직도 제 인생 명장면인데.<br>
+                        이제 더 이상 그의 신작을 볼 수 없다는 게 안 믿겨집니다.
+                        <span class="post-date">199X-11-04 23:14:02</span>
+                    </td>
+                </tr>
+                <tr class="theme-a-only">
+                    <td class="post-author">
+                        <b>익명_77</b><br>
+                        (14.32.***.***)
+                    </td>
+                    <td class="post-content">
+                        솔직히 <검은 코트의 사나이> 결말부 반전은 당시 충격 그 자체였지.<br>
+                        근데 난 아직도 안 믿음. 시신을 못 찾았잖아?<br>
+                        어쩌면 자기 영화처럼 신분 세탁하고 어딘가 숨어 살고 있을지도 모름 ㄷㄷ
+                        <span class="post-date">199X-11-04 23:30:15</span>
+                    </td>
+                </tr>
+                <tr class="theme-a-only">
+                    <td class="post-author">
+                        <b>시네마천국</b><br>
+                        (211.204.***.***)
+                    </td>
+                    <td class="post-content">
+                        <span class="blink-text">▶▶▶진실을 은폐하지 마라◀◀◀</span><br>
+                        실종 직전에 찍고 있던 미완성 프로젝트 필름이 통째로 사라졌다는 루머가 있습니다.<br>
+                        그 필름 안에 뭔가 판도라의 상자 같은 내용이 들어있었던 건 아닐까요...?<br>
+                        <!-- 채널 1 전용 갤러리 호출 (A 파라미터 전달) -->
+                        <a href="#" onclick="openGallery(event, 'A')">>> [복구됨] 삭제된_기사_스크랩.png (클릭)</a>
+                        <span class="post-date">199X-11-05 01:02:44</span>
+                    </td>
+                </tr>
+                <!-- B테마 전용 신작 코멘트 -->
+                <tr class="theme-b-only">
+                    <td class="post-author">
+                        <b>스태프_김</b><br>
+                        (10.0.***.***)
+                    </td>
+                    <td class="post-content">
+                        드디어 오늘 첫 세트장 촬영 들어갔습니다! 감독님 특유의 연출이 이번에도 빛을 발하네요. 다들 많은 기대 부탁드립니다.
+                        <span class="post-date">192X-12-01 09:00:00</span>
+                    </td>
+                </tr>
+                <tr class="theme-b-only">
+                    <td class="post-author">
+                        <b>조명팀막내</b><br>
+                        (10.0.***.***)
+                    </td>
+                    <td class="post-content">
+                        감독님 열정은 좋은데 퇴근 좀 시켜주세요... 밤샘 3일차 ㅠㅠ 그래도 모니터링 결과물 보면 뿌듯하긴 함.
+                        <span class="post-date">192X-12-02 16:40:05</span>
+                    </td>
+                </tr>
+                <tr class="theme-b-only">
+                    <td class="post-author">
+                        <b>주연배우A팬</b><br>
+                        (164.11.***.***)
+                    </td>
+                    <td class="post-content">
+                        어제 촬영장에 커피차 조공 다녀왔습니다! 감독님이랑 배우님들 다같이 모여서 상의하시는 모습 너무 훈훈했어요. 영화 개봉일만 손꼽아 기다려요!
+                        <span class="post-date">192X-12-03 14:15:30</span>
+                    </td>
+                </tr>
+                <tr class="theme-b-only">
+                    <td class="post-author">
+                        <b>소품팀_최</b><br>
+                        (10.0.***.***)
+                    </td>
+                    <td class="post-content">
+                        방금 감독님 컨펌 떨어진 메인 빌런 무기 소품 스케치 시안 공유합니다. 외부 유출 절대 금지!! 비밀번호는 평소 쓰던 그거 아시죠?<br>
+                        <!-- 채널 2 전용 갤러리 호출 (B 파라미터 전달) -->
+                        <a href="#" onclick="openGallery(event, 'B')">>> [보안 문서] 소품_시안_최종의최종.png (클릭)</a>
+                        <span class="post-date">192X-12-03 20:42:11</span>
+                    </td>
+                </tr>
+            </table>
+
+            <hr>
+
+            <!-- 덧글 작성 폼 (인터렉티브) -->
+            <div style="background-color: #e0e0e0; padding: 10px; border: 2px inset #ffffff;">
+                <h3 style="margin-top: 0; font-size: 16px;">▶ 답글 달기</h3>
+                <form id="reply-form" onsubmit="addComment(event)">
+                    <div style="margin-bottom: 5px;">
+                        <label for="name" style="display:inline-block; width: 60px;">이름:</label>
+                        <input type="text" id="name" style="width: 150px;" required placeholder="익명">
+                    </div>
+                    <div style="margin-bottom: 5px;">
+                        <label for="message" style="display:inline-block; width: 60px; vertical-align: top;">내용:</label>
+                        <textarea id="message" rows="3" style="width: calc(100% - 70px);" required></textarea>
+                    </div>
+                    <div style="text-align: right;">
+                        <button type="submit">등록 (Submit)</button>
+                        <button type="reset">지우기 (Reset)</button>
+                    </div>
+                </form>
+            </div>
+
+            <div style="text-align: center; margin-top: 20px; font-size: 12px;">
+                Copyright © 199X Film-Noir Archives. Best viewed with Netscape 4.0.<br>
+                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="88" height="31" alt="Valid HTML 3.2" style="border: 2px solid #808080; background: yellow; margin-top:5px;"> <!-- 가짜 인증 뱃지 공간 -->
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 윈도우 95 스타일 커스텀 모달 (배너 클릭 시 나타남) -->
+    <div id="custom-modal">
+        <div class="window" style="width: 350px;">
+            <div class="title-bar">
+                <span>알림 (System Alert)</span>
+                <div class="title-bar-btn" onclick="closeModal()">X</div>
+            </div>
+            <div class="window-content" style="text-align: center; padding: 20px;">
+                <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32'><circle cx='16' cy='16' r='15' fill='yellow' stroke='black' stroke-width='2'/><text x='16' y='24' font-family='sans-serif' font-size='24' font-weight='bold' text-anchor='middle' fill='black'>!</text></svg>" style="float: left; margin-right: 15px;">
+                <p id="modal-text" style="margin-top: 0; text-align: left;"></p>
+                <div style="margin-top: 20px; text-align: center; clear: both;">
+                    <button id="modal-confirm-btn" onclick="confirmModal()">확인 (OK)</button>
+                    <button onclick="closeModal()">취소 (Cancel)</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 이미지 갤러리 뷰어 모달 (A5 뷰어에 맞게 대형화) -->
+    <div id="gallery-modal">
+        <div class="window" style="width: 700px; max-width: 95vw;">
+            <div class="title-bar">
+                <span>이미지 뷰어 - IMG_Viewer.exe</span>
+                <div class="title-bar-btn" onclick="closeGallery()">X</div>
+            </div>
+            <div class="window-content" style="padding: 10px;">
+                <!-- height를 350px에서 75vh(화면 높이의 75%)로 변경하여 세로형 이미지 최적화 -->
+                <div style="border: 2px inset #ffffff; background: #000; height: 75vh; min-height: 400px; max-height: 900px; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; overflow: hidden;">
+                    <!-- 현재 표시될 이미지 영역 -->
+                    <img id="gallery-img" src="" alt="Gallery Image" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center; font-weight: bold; font-size: 14px;">
+                    <button id="btn-prev" onclick="changeGalleryPage(-1)">◀ 이전</button>
+                    <span id="gallery-page-indicator">1 / 3</span>
+                    <button id="btn-next" onclick="changeGalleryPage(1)">다음 ▶</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // === 구글 스프레드시트 연동 URL ===
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwBoYIu8_Z2fSU9vAtPliIYcVT6cDvJ_WV8-7cGG3QT6tuDPGUKo0p1z_C5AZnS3spMsw/exec';
+
+        // === 이미지 갤러리 뷰어 관련 로직 ===
+        // 💡 GitHub 호스팅용 이미지 경로 설정 가이드:
+        // 1. index.html 파일이 있는 폴더 안에 'images' 라는 이름의 새 폴더를 만듭니다.
+        // 2. 그 폴더 안에 사용할 실제 이미지 파일들(jpg, png 등)을 넣습니다.
+        // 3. 아래 배열의 파일명을 실제 파일명과 똑같이 맞춰줍니다.
+
+        // 1. 채널 1 (실종 사건 테마) 전용 이미지 목록
+        const galleryImagesA = [
+            "./images/scrap_article_01.png",  // 첫 번째 기사 이미지
+            "./images/police_report_02.png"   // 두 번째 보고서 이미지
+        ];
+
+        // 2. 채널 2 (신작 프로젝트 테마) 전용 이미지 목록
+        const galleryImagesB = [
+            "./images/secret_weapon_01.png",  // 첫 번째 스케치 시안
+            "./images/blueprint_02.png",      // 두 번째 블루프린트
+            "./images/lighting_plan_03.png"   // 세 번째 동선 안내
+        ];
+        
+        let currentImgIndex = 0;
+        let activeGallery = []; // 현재 띄울 갤러리 배열을 담는 변수
+
+        // 갤러리 열기 (채널 파라미터 type: 'A' 또는 'B'를 받음)
+        function openGallery(event, type) {
+            event.preventDefault(); 
+            activeGallery = (type === 'A') ? galleryImagesA : galleryImagesB; // 파라미터에 따라 배열 선택
+            currentImgIndex = 0; 
+            updateGalleryView();
+            document.getElementById('gallery-modal').style.display = 'flex';
+        }
+
+        function closeGallery() {
+            document.getElementById('gallery-modal').style.display = 'none';
+        }
+
+        function changeGalleryPage(direction) {
+            currentImgIndex += direction;
+            // 배열 범위 벗어나지 않게 처리
+            if (currentImgIndex < 0) currentImgIndex = 0;
+            if (currentImgIndex >= activeGallery.length) currentImgIndex = activeGallery.length - 1;
+            updateGalleryView();
+        }
+
+        function updateGalleryView() {
+            document.getElementById('gallery-img').src = activeGallery[currentImgIndex];
+            document.getElementById('gallery-page-indicator').innerText = `${currentImgIndex + 1} / ${activeGallery.length}`;
+            
+            // 첫 장, 마지막 장에 도달하면 이전/다음 버튼 비활성화
+            document.getElementById('btn-prev').disabled = (currentImgIndex === 0);
+            document.getElementById('btn-next').disabled = (currentImgIndex === activeGallery.length - 1);
+        }
+
+        // 테마 전환 기능
+        function toggleTheme() {
+            const body = document.body;
+            const btn = document.getElementById('theme-btn');
+            
+            body.classList.toggle('theme-b');
+            
+            if (body.classList.contains('theme-b')) {
+                btn.innerText = '[ 전환 : 실종 사건 게시판 ]';
+            } else {
+                btn.innerText = '[ 전환 : 신작 프로젝트 게시판 ]';
+            }
+        }
+
+        // 시트에서 데이터 가져오는 함수
+        async function loadComments() {
+            try {
+                // 프리뷰 환경(Sandbox)에서는 CORS 정책으로 인해 fetch가 차단될 수 있습니다.
+                const response = await fetch(SCRIPT_URL, { redirect: "follow" });
+                if (!response.ok) throw new Error('네트워크 응답이 정상적이지 않습니다.');
+                
+                const data = await response.json();
+                const table = document.getElementById('comments-table');
+                let htmlString = '';
+                
+                // 기존 스토리 코멘트를 유지하기 위해 테이블 비우기(deleteRow) 로직 삭제
+
+                // 가져온 데이터를 한 덩어리로 묶어서 순차적 로딩(깜빡임) 현상 방지
+                data.forEach(row => {
+                    if(!row[0]) return; // 빈 행 무시
+                    let msg = row[3] || "";
+                    let tlClass = "theme-a-only"; // 기본은 A테마
+                    
+                    // 태그 분리 처리
+                    if (msg.startsWith('[TL:A]')) {
+                        msg = msg.substring(6);
+                        tlClass = "theme-a-only";
+                    } else if (msg.startsWith('[TL:B]')) {
+                        msg = msg.substring(6);
+                        tlClass = "theme-b-only";
+                    }
+
+                    htmlString += `
+                        <tr class="${tlClass}">
+                            <td class="post-author">
+                                <b>${row[1]}</b><br>(${row[2]})
+                            </td>
+                            <td class="post-content">
+                                ${msg}<span class="post-date">${row[0]}</span>
+                            </td>
+                        </tr>
+                    `;
+                });
+                
+                // 묶어둔 데이터를 표의 맨 아래에 한 번에 렌더링하여 기존 데이터처럼 보이게 함
+                if(htmlString !== '') {
+                    const tbody = table.querySelector('tbody') || table;
+                    tbody.insertAdjacentHTML('beforeend', htmlString);
+                }
+            } catch(error) {
+                // 에러가 나더라도 기본 설정된 게시글은 지워지지 않도록 처리
+                console.warn('구글 시트 데이터를 불러오지 못했습니다. (프리뷰 환경 제한 또는 배포 설정 문제일 수 있습니다):', error);
+            }
+        }
+
+        // 폰트나 이미지가 다 로드될 때까지 기다리지 않고(window.onload 제거), 스크립트를 즉시 실행하여 로딩 체감 속도 개선
+        if (SCRIPT_URL && SCRIPT_URL.startsWith('http')) {
+            loadComments();
+        }
+
+        // 덧글 추가 기능 (현재 세션 즉각 반영 + 구글 시트로 전송)
+        async function addComment(event) {
+            event.preventDefault();
+            
+            const submitBtn = event.target.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.innerText;
+            
+            const nameInput = document.getElementById('name');
+            const messageInput = document.getElementById('message');
+            
+            const name = nameInput.value || '익명';
+            const message = messageInput.value.replace(/\n/g, "<br>"); // 줄바꿈 처리
+            
+            // 현재 날짜/시간 생성 (90년대 감성 포맷)
+            const now = new Date();
+            const year = "19XX"; // 컨셉 유지를 위해 연도는 고정
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const day = String(now.getDate()).padStart(2, '0');
+            const time = String(now.getHours()).padStart(2, '0') + ":" + 
+                         String(now.getMinutes()).padStart(2, '0') + ":" + 
+                         String(now.getSeconds()).padStart(2, '0');
+            
+            const dateStr = `${year}-${month}-${day} ${time}`;
+            
+            // 임의의 가짜 IP 생성
+            const fakeIP = `112.${Math.floor(Math.random() * 255)}.***.***`;
+
+            // 현재 테마에 따른 클래스 및 태그 설정
+            const isThemeB = document.body.classList.contains('theme-b');
+            const tlClass = isThemeB ? 'theme-b-only' : 'theme-a-only';
+            const tlTag = isThemeB ? '[TL:B]' : '[TL:A]';
+
+            // 입력 즉시 화면에 우선 표시 (새로고침 없이 빠른 피드백)
+            const table = document.getElementById('comments-table');
+            const newRow = table.insertRow(-1); // 맨 밑에 추가
+            newRow.className = tlClass; // 해당 테마에서만 보이도록 설정
+            
+            const authorCell = newRow.insertCell(0);
+            authorCell.className = 'post-author';
+            authorCell.innerHTML = `<b>${name}</b><br>(${fakeIP})`;
+            
+            const contentCell = newRow.insertCell(1);
+            contentCell.className = 'post-content';
+            contentCell.innerHTML = `${message}<span class="post-date">${dateStr}</span>`;
+            
+            // 입력 폼 초기화
+            nameInput.value = '';
+            messageInput.value = '';
+            
+            // 스크롤 이동
+            table.scrollIntoView({ behavior: 'smooth', block: 'end' });
+
+            // 구글 시트로 데이터 POST 전송
+            if (SCRIPT_URL && SCRIPT_URL.startsWith('http')) {
+                submitBtn.innerText = '전송 중...';
+                submitBtn.disabled = true;
+
+                const formData = new URLSearchParams();
+                formData.append('date', dateStr);
+                formData.append('name', name);
+                formData.append('ip', fakeIP);
+                formData.append('message', tlTag + message); // 시트에 저장할 때 숨겨진 태그 부착
+
+                try {
+                    // mode: 'no-cors'를 사용하면 구글 시트의 302 리다이렉트 응답에 의한 브라우저 CORS 에러를 방지합니다.
+                    await fetch(SCRIPT_URL, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        body: formData,
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded',
+                        }
+                    });
+                } catch(error) {
+                    console.warn('데이터 전송 오류 (프리뷰 환경 제약일 수 있습니다):', error);
+                } finally {
+                    submitBtn.innerText = originalBtnText;
+                    submitBtn.disabled = false;
+                }
+            }
+        }
+
+        // 모달 관리 변수
+        let targetUrl = '';
+
+        // 모달 열기
+        function openModal(text, url) {
+            document.getElementById('modal-text').innerText = text;
+            targetUrl = url;
+            document.getElementById('custom-modal').style.display = 'flex';
+        }
+
+        // 모달 닫기
+        function closeModal() {
+            document.getElementById('custom-modal').style.display = 'none';
+        }
+
+        // 모달에서 확인 클릭 시 이동
+        function confirmModal() {
+            // 실제 배포하실 때는 아래 코드를 사용하세요.
+            // window.location.href = targetUrl;
+            alert('이동하려는 링크: ' + targetUrl + '\n(실제 적용 시 주석을 해제하세요!)');
+            closeModal();
+        }
+
+        // 초기 게이트 화면에서 선택 시 진입하는 함수
+        function enterSite(theme) {
+            // 게이트 화면 숨기기
+            document.getElementById('gate-screen').style.display = 'none';
+            
+            const body = document.body;
+            const btn = document.getElementById('theme-btn');
+            
+            // 선택한 테마에 맞춰 초기 설정 세팅
+            if (theme === 'B') {
+                body.classList.add('theme-b');
+                btn.innerText = '[ 전환 : 실종 사건 게시판 ]';
+            } else {
+                body.classList.remove('theme-b');
+                btn.innerText = '[ 전환 : 신작 프로젝트 게시판 ]';
+            }
+        }
+    </script>
+</body>
+</html>
