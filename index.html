@@ -484,7 +484,7 @@
     <!-- 테마 전환 토글 버튼 (여백 및 버튼 디자인 통일) -->
     <div style="max-width: 800px; margin: 0 auto 10px auto; text-align: right;">
         <button onclick="toggleTheme()" id="theme-btn">
-            [ 전환 : Title by kani ]
+            [ 채널 2 : Title by kani ]
         </button>
     </div>
 
@@ -800,16 +800,16 @@
             body.classList.toggle('theme-b');
             
             if (body.classList.contains('theme-b')) {
-                btn.innerText = '[ 전환 : 幾時你回來 by YangjangP ]';
+                btn.innerText = '[ 채널 1 : 幾時你回來 by YangjangP ]';
             } else {
-                btn.innerText = '[ 전환 : Title by Kani ]';
+                btn.innerText = '[ 채널 2 : Title by Kani ]';
             }
         }
 
         // 시트에서 데이터 가져오는 함수
         async function loadComments() {
             try {
-                // 프리뷰 환경(Sandbox)에서는 CORS 정책으로 인해 fetch가 차단될 수 있습니다.
+                // 프리뷰 환경(Sandbox)에서는 CORS 정책으로 인해 fetch가 차단될 수 있음.
                 const response = await fetch(SCRIPT_URL, { redirect: "follow" });
                 if (!response.ok) throw new Error('네트워크 응답이 정상적이지 않습니다.');
                 
@@ -875,9 +875,9 @@
             const name = nameInput.value || '익명';
             const message = messageInput.value.replace(/\n/g, "<br>"); // 줄바꿈 처리
             
-            // 현재 날짜/시간 생성 (90년대 감성 포맷)
+            // 현재 날짜/시간 생성 
             const now = new Date();
-            const year = "19XX"; // 컨셉 유지를 위해 연도는 고정
+            const year = "19XX"; 
             const month = String(now.getMonth() + 1).padStart(2, '0');
             const day = String(now.getDate()).padStart(2, '0');
             const time = String(now.getHours()).padStart(2, '0') + ":" + 
@@ -976,10 +976,10 @@
             // 선택한 테마에 맞춰 초기 설정 세팅
             if (theme === 'B') {
                 body.classList.add('theme-b');
-                btn.innerText = '[ 전환 : 幾時你回來 by YangjangP ]';
+                btn.innerText = '[ 채널 1 : 幾時你回來 by YangjangP ]';
             } else {
                 body.classList.remove('theme-b');
-                btn.innerText = '[ 전환 : Title by Kani ]';
+                btn.innerText = '[ 채널 2 : Title by Kani ]';
             }
         }
     </script>
