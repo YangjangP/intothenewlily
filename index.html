@@ -174,15 +174,17 @@
             white-space: nowrap;
             margin-bottom: 15px;
             border: 2px inset #ffffff;
+            box-sizing: border-box;
         }
         
         .marquee span {
             display: inline-block;
+            padding-left: 100%; /* 딜레이 제거: 박스의 오른쪽 끝에서 정확히 시작하도록 여백 추가 */
             animation: marquee 25s linear infinite; 
         }
 
         @keyframes marquee {
-            0% { transform: translateX(100%); }
+            0% { transform: translateX(0); } /* 시작 위치 변경 */
             100% { transform: translateX(-100%); }
         }
 
@@ -629,7 +631,7 @@
                     </td>
                     <td class="post-content">
                         <span class="blink-text">▶▶▶진실을 은폐하지 마라◀◀◀</span><br>
-                        누아르가 최근 유언장을 미리 준비했다는 관계자 증언 확보! 실종인가? 혹은 감독의 자작극인가? <br>
+                        누아르가 최근 유언장을 미리 준비했다는 관계자 증언 확보! 실종인가? 혹은 감독의 자작극인가?<br>
                         <!-- 채널 1 전용 갤러리 호출 (A 파라미터 전달) -->
                         <a href="#" onclick="openGallery(event, 'A')">>> [幾時你回來] 샘플 확인하기</a>
                         <span class="post-date">199X-11-05 01:02:44</span>
