@@ -4,12 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>다시만난백합 [경화루]</title>
-    <!-- 90년대 레트로 픽셀 폰트 (둥근모꼴) 로드 -->
     <link href="https://cdn.jsdelivr.net/gh/neodgm/neodgm-webfont@latest/neodgm/style.css" rel="stylesheet">
     <style>
-        /* 90년대 웹 감성을 위한 기본 스타일 */
         body {
-            background-color: #c0c0c0; /* 윈도우 95 기본 배경색 */
+            background-color: #c0c0c0; 
             background-image: url('data:image/svg+xml;utf8,<svg width="4" height="4" xmlns="http://www.w3.org/2000/svg"><rect width="4" height="4" fill="%23c0c0c0"/><rect width="1" height="1" fill="%23a0a0a0"/></svg>');
             font-family: 'DungGeunMo', 'Gulim', '굴림', 'MS Sans Serif', monospace;
             color: #000;
@@ -180,7 +178,7 @@
         
         .marquee span {
             display: inline-block;
-            animation: marquee 25s linear infinite; /* 15s에서 25s로 애니메이션 지속 시간을 늘려 속도를 늦춤 */
+            animation: marquee 25s linear infinite; 
         }
 
         @keyframes marquee {
@@ -193,7 +191,7 @@
             display: flex;
             justify-content: space-between;
             gap: 10px;
-            margin-bottom: 10px; /* 20px에서 10px로 간격 축소하여 위아래 배너와 여백 통일 */
+            margin-bottom: 10px; 
         }
 
         /* 광고 배너 스타일 (깜빡임, 화려한 색상) */
@@ -293,7 +291,7 @@
             border-bottom: 2px solid #808080;
             width: 100%;
             box-sizing: border-box;
-            text-shadow: none; /* 다른 투박한 버튼들처럼 글자 그림자 제거 */
+            text-shadow: none; 
         }
         .ad-banner.about-res:active {
             border-top: 2px solid #808080;
@@ -307,37 +305,37 @@
         @media (max-width: 600px) {
             body {
                 padding: 5px;
-                font-size: 14px; /* 전체 기본 폰트 축소 */
+                font-size: 14px; /* 전체 기본 폰트 */
             }
             .window {
                 margin-bottom: 10px;
             }
             .title-bar {
-                font-size: 14px; /* 창 제목 크기 축소 */
+                font-size: 14px; /* 창 제목 크기 */
             }
             .ad-container {
                 flex-direction: column;
             }
             .ad-banner {
-                font-size: 13px; /* 배너 텍스트 크기 축소 */
+                font-size: 13px; /* 배너 텍스트 크기 */
                 padding: 10px 5px;
             }
             .post-author {
                 width: 65px;
-                font-size: 11px; /* 작성자 이름 축소 */
+                font-size: 11px; /* 작성자 이름 */
             }
             .post-content {
-                font-size: 13px; /* 게시글 내용 축소 */
+                font-size: 13px; /* 게시글 내용 */
                 word-break: break-word;
             }
             .post-date {
-                font-size: 11px; /* 날짜 크기 축소 */
+                font-size: 11px; /* 날짜 크기 */
             }
             .hit-counter {
-                font-size: 14px; /* 방문자 카운터 축소 */
+                font-size: 14px; /* 방문자 카운터 */
             }
             button, .retro-btn, .gate-btn {
-                font-size: 13px; /* 각종 버튼 텍스트 축소 */
+                font-size: 13px; /* 각종 버튼 텍스트 */
             }
             .gate-title {
                 font-size: 13px;
@@ -359,7 +357,7 @@
             justify-content: center;
         }
 
-        /* 갤러리 모달 전용 스타일 추가 */
+        /* 갤러리 모달 전용 스타일 */
         #gallery-modal {
             display: none;
             position: fixed;
@@ -428,7 +426,7 @@
         .gate-btn {
             display: block;
             width: 100%;
-            margin-bottom: 10px; /* 버튼 간격 10px로 통일 */
+            margin-bottom: 10px; 
             padding: 12px 10px;
             text-align: left;
             font-size: 15px;
@@ -707,21 +705,21 @@
 
         // 1. 채널 1 (실종 사건 테마) 전용 이미지 목록
         const galleryImagesA = [
-            "./image001.jpg",  // 첫 번째 기사 이미지
-            "./image002.jpg",  // 첫 번째 기사 이미지
-            "./image003.jpg",  // 첫 번째 기사 이미지
-            "./image004.jpg",  // 첫 번째 기사 이미지
-            "./image005.jpg",  // 첫 번째 기사 이미지
-            "./image006.jpg",  // 첫 번째 기사 이미지
-            "./image007.jpg",  // 첫 번째 기사 이미지
-            "./image008.jpg",  // 첫 번째 기사 이미지
+            "./image001.jpg",  
+            "./image002.jpg", 
+            "./image003.jpg",  
+            "./image004.jpg", 
+            "./image005.jpg", 
+            "./image006.jpg",  
+            "./image007.jpg", 
+            "./image008.jpg", 
         ];
 
         // 2. 채널 2 (신작 프로젝트 테마) 전용 이미지 목록
         const galleryImagesB = [
-            "./images/secret_weapon_01.png",  // 첫 번째 스케치 시안
-            "./images/blueprint_02.png",      // 두 번째 블루프린트
-            "./images/lighting_plan_03.png"   // 세 번째 동선 안내
+            "./images/secret_weapon_01.png", 
+            "./images/blueprint_02.png",     
+            "./images/lighting_plan_03.png"  
         ];
         
         let currentImgIndex = 0;
