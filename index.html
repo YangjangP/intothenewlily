@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>다시만난백합 [경화루]</title>
+    <title>[경화루] 다시 만난 백합</title>
     <link href="https://cdn.jsdelivr.net/gh/neodgm/neodgm-webfont@latest/neodgm/style.css" rel="stylesheet">
     <style>
         body {
@@ -325,17 +325,6 @@
                 font-size: 13px; /* 배너 텍스트 크기 */
                 padding: 10px 5px;
             }
-            .post-author {
-                width: 65px;
-                font-size: 11px; /* 작성자 이름 */
-            }
-            .post-content {
-                font-size: 13px; /* 게시글 내용 */
-                word-break: break-word;
-            }
-            .post-date {
-                font-size: 11px; /* 날짜 크기 */
-            }
             .hit-counter {
                 font-size: 14px; /* 방문자 카운터 */
             }
@@ -362,6 +351,51 @@
                 padding: 10px !important;
                 top: 5px !important;
                 right: 5px !important;
+            }
+            
+            /* ====== 모바일 전용 게시판 레이아웃 (카드형) ====== */
+            #comments-table {
+                border: none;
+                background-color: transparent;
+            }
+            #comments-table tr:first-child {
+                display: none !important; /* 모바일에서는 '작성자 | 내용' 헤더 숨김 */
+            }
+            #comments-table td {
+                display: block;
+                width: 100% !important;
+                box-sizing: border-box;
+                border: none;
+                padding: 0;
+            }
+            /* 모바일 작성자명/IP 영역 상단 배치 */
+            .post-author {
+                background-color: #d0d0d0; /* 약간 짙은 회색으로 구분감 */
+                border: 2px outset #ffffff;
+                border-bottom: none;
+                padding: 6px 10px !important;
+                font-size: 12px !important;
+                display: flex;
+                justify-content: space-between; /* 양끝 정렬 */
+                align-items: center;
+                margin-top: 15px; /* 코멘트 간 여백 확보 */
+            }
+            .post-author br {
+                display: none; /* 줄바꿈을 없애 한 줄로 만듦 */
+            }
+            /* 모바일 게시물 내용 하단 배치 */
+            .post-content {
+                background-color: #ffffff;
+                border: 2px inset #ffffff; /* 안으로 파인 컨텐츠 박스 */
+                padding: 12px 10px !important;
+                font-size: 14px !important;
+                word-break: break-word;
+            }
+            .post-date {
+                text-align: right; /* 모바일에서는 날짜 우측 정렬 */
+                margin-top: 8px;
+                font-size: 11px !important;
+                color: #888;
             }
         }
 
