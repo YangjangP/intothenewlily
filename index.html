@@ -668,12 +668,6 @@
         // === 구글 스프레드시트 연동 URL ===
         const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwBoYIu8_Z2fSU9vAtPliIYcVT6cDvJ_WV8-7cGG3QT6tuDPGUKo0p1z_C5AZnS3spMsw/exec';
 
-        // === 이미지 갤러리 뷰어 관련 로직 ===
-        // 💡 GitHub 호스팅용 이미지 경로 설정 가이드:
-        // 1. index.html 파일이 있는 폴더 안에 'images' 라는 이름의 새 폴더를 만듭니다.
-        // 2. 그 폴더 안에 사용할 실제 이미지 파일들(jpg, png 등)을 넣습니다.
-        // 3. 아래 배열의 파일명을 실제 파일명과 똑같이 맞춰줍니다.
-
         // 1. 채널 1 (실종 사건 테마) 전용 이미지 목록
         const galleryImagesA = [
             "./image001.jpg",  // 첫 번째 기사 이미지
@@ -895,9 +889,7 @@
 
         // 모달에서 확인 클릭 시 이동
         function confirmModal() {
-            // 실제 배포하실 때는 아래 코드를 사용하세요.
-            // window.location.href = targetUrl;
-            alert('이동하려는 링크: ' + targetUrl + '\n(실제 적용 시 주석을 해제하세요!)');
+            window.location.href = targetUrl;
             closeModal();
         }
 
