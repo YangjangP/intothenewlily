@@ -283,6 +283,22 @@
             50% { border-color: #ff0000; }
         }
 
+        /* 신규 추가된 광고 배너 (블루/네온 스타일) */
+        .ad-banner.new-sponsor {
+            background: linear-gradient(to right, #000080, #008080);
+            color: #00ffff;
+            margin-bottom: 10px;
+            border: 3px outset #00ffff;
+            animation: blinkNew 1.5s infinite;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        @keyframes blinkNew {
+            0%, 100% { border-color: #00ffff; color: #00ffff; }
+            50% { border-color: #ffffff; color: #ffffff; }
+        }
+
         /* 경화루 About 배너 (하단 추가) */
         .ad-banner.about-res {
             background-color: #c0c0c0;
@@ -558,14 +574,14 @@
                 <div class="ad-banner restaurant" onclick="openModal('[경화루] 선입금/수요조사 페이지로 이동하시겠습니까?', 'https://yangjangp.github.io/scrap-paper-kr/')">
                     [廣東菜館] 광동식 중화요리 전문점 경화루 <br class="mobile-br"> ☞ 선입금/수요조사 LINK 
                 </div>
-                
-            </fieldset>
 
-            <div class="theme-a-only" style="background-color: #000080; color: white; padding: 5px; font-weight: bold; margin-bottom: 5px;">
-                Thread: [R.I.P?] N감독에 대한 추억...작품 재평가
-            </div>
-            <div class="theme-b-only" style="background-color: #000080; color: white; padding: 5px; font-weight: bold; margin-bottom: 5px;">
-                Thread: [NEW] N감독 신작 &lt;프로젝트: OOO&gt; 응원 게시판
+                <!-- 신규 추가된 스폰서 배너 (디자인 변경) -->
+                <div class="ad-banner new-sponsor" onclick="openModal('[경화루] 르포 기사 페이지로 이동하시겠습니까?', 'https://yangjangp.github.io/scrap-paper-kr/')">
+                    [AD] LA 중화요리 대가 경화루에 대하여 <br class="mobile-br"> ☞ 르포 기사 보러 가기
+                </div>
+
+                <!-- 가로형 배너 이미지 삽입 영역 (기존 회지/굿즈 버튼 대체) -->
+                <div style="margin-bottom: 10px; text-align: center;">
             </div>
 
             <!-- 게시판 내용 -->
