@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Netscape Navigator - [Film Noir Archives]</title>
+    <title>다시만난백합 [경화루]</title>
     <!-- 90년대 레트로 픽셀 폰트 (둥근모꼴) 로드 -->
     <link href="https://cdn.jsdelivr.net/gh/neodgm/neodgm-webfont@latest/neodgm/style.css" rel="stylesheet">
     <style>
@@ -180,7 +180,7 @@
         
         .marquee span {
             display: inline-block;
-            animation: marquee 15s linear infinite;
+            animation: marquee 25s linear infinite; /* 15s에서 25s로 애니메이션 지속 시간을 늘려 속도를 늦춤 */
         }
 
         @keyframes marquee {
@@ -312,7 +312,12 @@
                 margin-bottom: 10px;
             }
             .ad-container {
-                flex-direction: column;
+                flex-direction: row; /* 모바일에서도 세로 대신 가로(PC와 동일)로 배치되도록 수정 */
+                gap: 5px; /* 모바일 화면에 맞춰 간격 소폭 축소 */
+            }
+            .ad-banner {
+                font-size: 12px; /* 한 줄에 두 개가 들어가도 텍스트가 잘리지 않도록 폰트 축소 */
+                padding: 10px 2px;
             }
             .post-author {
                 width: 70px;
@@ -431,10 +436,10 @@
                 <p style="margin-top: 0; margin-bottom: 15px;">접속할 채널을 선택해 주십시오.</p>
                 <!-- CSS 공통 태그인 button을 사용하여 디자인 자동 상속 -->
                 <button class="gate-btn a-btn" onclick="enterSite('A')">
-                    ▶ [채널 1] Film NewArt BBS<br><span style="font-size: 12px; font-weight: normal; color: #333;">(실종 사건 추모 및 기록실)</span>
+                    ▶ [채널 1] 幾時你回來<br><span style="font-size: 12px; font-weight: normal; color: #333;">(by YanjangP)</span>
                 </button>
                 <button class="gate-btn b-btn" onclick="enterSite('B')">
-                    ▶ [채널 2] Project OOO <br><span style="font-size: 12px; font-weight: normal; color: #333;">(신작 대기조)</span>
+                    ▶ [채널 2] Title<br><span style="font-size: 12px; font-weight: normal; color: #333;">(by Kani)</span>
                 </button>
             </div>
         </div>
@@ -443,7 +448,7 @@
     <!-- 테마 전환 토글 버튼 (여백 및 버튼 디자인 통일) -->
     <div style="max-width: 800px; margin: 0 auto 10px auto; text-align: right;">
         <button onclick="toggleTheme()" id="theme-btn">
-            [ 전환 : 신작 프로젝트 게시판 ]
+            [ 전환 : Title by kani ]
         </button>
     </div>
 
@@ -500,7 +505,7 @@
             </fieldset>
 
             <div class="theme-a-only" style="background-color: #000080; color: white; padding: 5px; font-weight: bold; margin-bottom: 5px;">
-                Thread: [R.I.P?] 실종된 N감독에 대한 추억... 작품 재평가 열풍?
+                Thread: [R.I.P?] 실종된 N감독에 대한 추억... 작품 재평가 열풍
             </div>
             <div class="theme-b-only" style="background-color: #000080; color: white; padding: 5px; font-weight: bold; margin-bottom: 5px;">
                 Thread: [NEW] N감독 신작 &lt;프로젝트: OOO&gt; 응원 게시판
@@ -519,7 +524,7 @@
                     </td>
                     <td class="post-content">
                         오늘 뉴스 뜬 거 보셨나요. 결국 수사 종결됐네요...<br>
-                        진짜 사망한 걸까요? 그의 데뷔작 <붉은 밤의 골목>에서 그 축축한 빗속 총격전 씬은 아직도 제 인생 명장면인데.<br>
+                        진짜 사망한 걸까요? <거리 너머의 그림자>에서 그 축축한 빗속 총격전 씬은 아직도 제 인생 명장면인데.<br>
                         이제 더 이상 그의 신작을 볼 수 없다는 게 안 믿겨집니다.
                         <span class="post-date">199X-11-04 23:14:02</span>
                     </td>
@@ -530,7 +535,7 @@
                         (14.32.***.***)
                     </td>
                     <td class="post-content">
-                        솔직히 <검은 코트의 사나이> 결말부 반전은 당시 충격 그 자체였지.<br>
+                        솔직히 <혼돈> 결말부 반전은 당시 충격 그 자체였지.<br>
                         근데 난 아직도 안 믿음. 시신을 못 찾았잖아?<br>
                         어쩌면 자기 영화처럼 신분 세탁하고 어딘가 숨어 살고 있을지도 모름 ㄷㄷ
                         <span class="post-date">199X-11-04 23:30:15</span>
@@ -538,15 +543,39 @@
                 </tr>
                 <tr class="theme-a-only">
                     <td class="post-author">
-                        <b>시네마천국</b><br>
+                        <b>C07</b><br>
+                        (114.16.***.***)
+                    </td>
+                    <td class="post-content">
+                        사실 난 <스묄라의 얼음>을 가장 좋아했어.<br>
+                        이 작품은 재평가 받아야 한다고<br>
+                        본인이 이해를 못했다고 작품성이 떨어지는건 아니란말이지
+                        <span class="post-date">199X-11-04 23:36:12</span>
+                    </td>
+                </tr>
+                <tr class="theme-a-only">
+                    <td class="post-author">
+                        <b>시네필리아</b><br>
+                        (203.30.***.***)
+                    </td>
+                    <td class="post-content">
+                        C07 급발진하네 <br>
+                        누아르 감독 초기 작품이 메이저인 세계선에 살고싶진 않아 <br>
+                        그치만 사실 그 때의 작품들이 그립기도 했어. 내 닉네임 좀 보라고. 
+                        <span class="post-date">199X-11-04 23:41:53</span>
+                    </td>
+                </tr>
+                <tr class="theme-a-only">
+                    <td class="post-author">
+                        <b>UTTA</b><br>
                         (211.204.***.***)
                     </td>
                     <td class="post-content">
                         <span class="blink-text">▶▶▶진실을 은폐하지 마라◀◀◀</span><br>
-                        실종 직전에 찍고 있던 미완성 프로젝트 필름이 통째로 사라졌다는 루머가 있습니다.<br>
-                        그 필름 안에 뭔가 판도라의 상자 같은 내용이 들어있었던 건 아닐까요...?<br>
+                        의도적으로 흔적을 지우고 급하게 유언을 준비했다는 관계자 증언 확보<br>
+                        실종인가? 혹은 감독의 자작극인가? <br>
                         <!-- 채널 1 전용 갤러리 호출 (A 파라미터 전달) -->
-                        <a href="#" onclick="openGallery(event, 'A')">>> [복구됨] 삭제된_기사_스크랩.png (클릭)</a>
+                        <a href="#" onclick="openGallery(event, 'A')">>> [幾時你回來] 샘플 확인하기.jpg (클릭)</a>
                         <span class="post-date">199X-11-05 01:02:44</span>
                     </td>
                 </tr>
@@ -728,9 +757,9 @@
             body.classList.toggle('theme-b');
             
             if (body.classList.contains('theme-b')) {
-                btn.innerText = '[ 전환 : 실종 사건 게시판 ]';
+                btn.innerText = '[ 전환 : 幾時你回來 by YangjangP ]';
             } else {
-                btn.innerText = '[ 전환 : 신작 프로젝트 게시판 ]';
+                btn.innerText = '[ 전환 : Title by Kani ]';
             }
         }
 
@@ -904,10 +933,10 @@
             // 선택한 테마에 맞춰 초기 설정 세팅
             if (theme === 'B') {
                 body.classList.add('theme-b');
-                btn.innerText = '[ 전환 : 실종 사건 게시판 ]';
+                btn.innerText = '[ 전환 : 幾時你回來 by YangjangP ]';
             } else {
                 body.classList.remove('theme-b');
-                btn.innerText = '[ 전환 : 신작 프로젝트 게시판 ]';
+                btn.innerText = '[ 전환 : Title by Kani ]';
             }
         }
     </script>
