@@ -307,31 +307,44 @@
         @media (max-width: 600px) {
             body {
                 padding: 5px;
+                font-size: 14px; /* 전체 기본 폰트 축소 */
             }
             .window {
                 margin-bottom: 10px;
             }
+            .title-bar {
+                font-size: 14px; /* 창 제목 크기 축소 */
+            }
             .ad-container {
-                flex-direction: row; /* 모바일에서도 세로 대신 가로(PC와 동일)로 배치되도록 수정 */
-                gap: 5px; /* 모바일 화면에 맞춰 간격 소폭 축소 */
+                flex-direction: column;
             }
             .ad-banner {
-                font-size: 12px; /* 한 줄에 두 개가 들어가도 텍스트가 잘리지 않도록 폰트 축소 */
-                padding: 10px 2px;
+                font-size: 13px; /* 배너 텍스트 크기 축소 */
+                padding: 10px 5px;
             }
             .post-author {
-                width: 70px;
-                font-size: 12px;
+                width: 65px;
+                font-size: 11px; /* 작성자 이름 축소 */
             }
             .post-content {
-                font-size: 14px;
+                font-size: 13px; /* 게시글 내용 축소 */
                 word-break: break-word;
             }
+            .post-date {
+                font-size: 11px; /* 날짜 크기 축소 */
+            }
             .hit-counter {
-                font-size: 16px;
+                font-size: 14px; /* 방문자 카운터 축소 */
+            }
+            button, .retro-btn, .gate-btn {
+                font-size: 13px; /* 각종 버튼 텍스트 축소 */
+            }
+            .gate-title {
+                font-size: 13px;
             }
             input[type="text"], textarea {
                 width: 100% !important;
+                font-size: 13px;
             }
         }
 
@@ -643,11 +656,6 @@
                         <button type="reset">지우기 (Reset)</button>
                     </div>
                 </form>
-            </div>
-
-            <div style="text-align: center; margin-top: 20px; font-size: 12px;">
-                Copyright © 199X Film-Noir Archives. Best viewed with Netscape 4.0.<br>
-                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="88" height="31" alt="Valid HTML 3.2" style="border: 2px solid #808080; background: yellow; margin-top:5px;"> <!-- 가짜 인증 뱃지 공간 -->
             </div>
 
         </div>
