@@ -180,7 +180,15 @@
         .marquee span {
             display: inline-block;
             padding-left: 100%; /* 딜레이 제거: 박스의 오른쪽 끝에서 정확히 시작하도록 여백 추가 */
-            animation: marquee 25s linear infinite; 
+        }
+
+        /* 테마별 흐르는 텍스트 속도 개별 조정 */
+        .marquee.theme-a-only span {
+            animation: marquee 25s linear infinite; /* 채널 1 텍스트 속도 (25초) */
+        }
+        
+        .marquee.theme-b-only span {
+            animation: marquee 30s linear infinite; /* 채널 2 텍스트 속도 (글자가 더 길기 때문에 시간을 늘려 속도를 맞춤) */
         }
 
         @keyframes marquee {
@@ -527,7 +535,7 @@
                     ▶ [채널 1] 幾時你回來<br><span style="font-size: 12px; font-weight: normal; color: #333;">(by YanjangP)</span>
                 </button>
                 <button class="gate-btn b-btn" onclick="enterSite('B')">
-                    ▶ [채널 2] Title<br><span style="font-size: 12px; font-weight: normal; color: #333;">(by Kani)</span>
+                    ▶ [채널 2] Chair<br><span style="font-size: 12px; font-weight: normal; color: #333;">(by Kani)</span>
                 </button>
             </div>
         </div>
@@ -536,7 +544,7 @@
     <!-- 테마 전환 토글 버튼 (여백 및 버튼 디자인 통일) -->
     <div style="max-width: 800px; margin: 0 auto 10px auto; text-align: right;">
         <button onclick="toggleTheme()" id="theme-btn">
-            [ 채널 2 : Title by kani ]
+            [ 채널 2 : Chair by kani ]
         </button>
     </div>
 
@@ -559,7 +567,7 @@
                 <span>[공지] 환영합니다. 본 게시판은 익명으로 운영됩니다. /// [속보] N감독 실종 10일차, 변호인 요청으로 경찰 수사 공식 종결. 사망으로 간주... /// 욕설 및 비방글은 통보 없이 삭제됩니다.</span>
             </div>
             <div class="marquee theme-b-only">
-                <span>[공지] 환영합니다. 본 게시판은 익명으로 운영됩니다. /// [속보] N감독 신작 제작 착수, 야간순찰자와의 협업 기대 /// 욕설 및 비방글은 통보 없이 삭제됩니다.</span>
+                <span>【☺INFO☺】가방 관련 상담이나 곤란한 일이 있다면 여기로! /// 【☃WANTED☃】지난주 냉장고에 넣어둔 아이스크림 먹은 범인 찾습니다 /// 【☯CAUTION!☯】게시판에 이상한 짓 하면 릴리가 책임지고 다음 생으로 보내버림 </span>
             </div>
 
             <div style="text-align: center; margin-bottom: 10px;">
@@ -679,7 +687,7 @@
                 <!-- B테마 전용 신작 코멘트 -->
                 <tr class="theme-b-only">
                     <td class="post-author">
-                        <b>블로니</b><br>
+                        <b>Monster Designer</b><br>
                         (131.76.***.***)
                     </td>
                     <td class="post-content">
@@ -689,7 +697,7 @@
                 </tr>
                 <tr class="theme-b-only">
                     <td class="post-author">
-                        <b>양월</b><br>
+                        <b>경비원_0305</b><br>
                         (103.201.***.***)
                     </td>
                     <td class="post-content">
@@ -699,8 +707,8 @@
                 </tr>
                 <tr class="theme-b-only">
                     <td class="post-author">
-                        <b>제시카</b><br>
-                        (31.255.***.***)
+                        <b>Monster Designer</b><br>
+                        (131.76.***.***)
                     </td>
                     <td class="post-content">
                         안녕! 나는 제시카야! 이렇게 사용하는 거 맞아? 
@@ -709,18 +717,18 @@
                 </tr>
                 <tr class="theme-b-only">
                     <td class="post-author">
-                        <b>블로니</b><br>
+                        <b>Monster Designer</b><br>
                         (131.76.***.***)
                     </td>
                     <td class="post-content">
-                        아, 방금건 제시카가 실수로 올려서... <br>
-                        @제시카 사용법은 그게 맞아! 그치만 이거 내 계정이니까, 나중에 계정 만들어줄게. 
+                        아, 방금 건 '@귀여운 아기 사슴'이 실수로 올려서... <br>
+                        @Monster Designer 사용법은 그게 맞아! 그치만 이거 내 계정이니까, 나중에 계정 만들어줄게. 
                         <span class="post-date">192X-12-02 16:25:14</span>
                     </td>
                 </tr>
                 <tr class="theme-b-only">
                     <td class="post-author">
-                        <b>블로니</b><br>
+                        <b>Monster Designer</b><br>
                         (131.76.***.***)
                     </td>
                     <td class="post-content">
@@ -730,7 +738,7 @@
                 </tr>
                 <tr class="theme-b-only">
                     <td class="post-author">
-                        <b>호러피디아</b><br>
+                        <b>The nerdy nerd</b><br>
                         (233.111.***.***)
                     </td>
                     <td class="post-content">
@@ -740,7 +748,7 @@
                 </tr>
                 <tr class="theme-b-only">
                     <td class="post-author">
-                        <b>블로니</b><br>
+                        <b>Monster Designer</b><br>
                         (131.76.***.***)
                     </td>
                     <td class="post-content">
@@ -750,7 +758,7 @@
                 </tr>
                 <tr class="theme-b-only">
                     <td class="post-author">
-                        <b>안안리</b><br>
+                        <b>관리자씨</b><br>
                         (88.133.***.***)
                     </td>
                     <td class="post-content">
@@ -760,7 +768,7 @@
                 </tr>
                 <tr class="theme-b-only">
                     <td class="post-author">
-                        <b>왕린</b><br>
+                        <b>조수</b><br>
                         (100.209.***.***)
                     </td>
                     <td class="post-content">
@@ -917,7 +925,7 @@
             if (body.classList.contains('theme-b')) {
                 btn.innerText = '[ 채널 1 : 幾時你回來 by YangjangP ]';
             } else {
-                btn.innerText = '[ 채널 2 : Title by Kani ]';
+                btn.innerText = '[ 채널 2 : Chair by Kani ]';
             }
         }
 
@@ -1094,7 +1102,7 @@
                 btn.innerText = '[ 채널 1 : 幾時你回來 by YangjangP ]';
             } else {
                 body.classList.remove('theme-b');
-                btn.innerText = '[ 채널 2 : Title by Kani ]';
+                btn.innerText = '[ 채널 2 : Chair by Kani ]';
             }
         }
     </script>
