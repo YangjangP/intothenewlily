@@ -40,6 +40,7 @@
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
+            box-sizing: border-box; /* 모바일 깨짐 방지 */
         }
 
         .title-bar {
@@ -119,12 +120,14 @@
             border-collapse: collapse;
             background-color: #ffffff;
             border: 2px inset #ffffff;
+            table-layout: auto;
         }
 
         th, td {
             border: 1px solid #c0c0c0;
             padding: 8px;
             text-align: left;
+            word-break: break-word; /* 긴 단어 줄바꿈 처리 */
         }
 
         th {
@@ -143,6 +146,7 @@
 
         .post-content {
             vertical-align: top;
+            max-width: 100%; /* 너비 초과 방지 */
         }
 
         .post-date {
@@ -150,6 +154,21 @@
             color: #808080;
             margin-top: 5px;
             display: block;
+        }
+        
+        /* ASCII 아트 및 긴 텍스트(pre) 오버플로우 방지 */
+        pre {
+            max-width: 100%;
+            overflow-x: auto; /* 화면을 넘어가면 가로 스크롤바 생성 */
+            box-sizing: border-box;
+            padding-bottom: 5px;
+        }
+
+        /* 스폰서 영역 오버플로우 방지 */
+        fieldset {
+            max-width: 100%;
+            box-sizing: border-box;
+            overflow: hidden;
         }
 
         /* 텍스트 입력창 (인셋 효과) */
@@ -367,6 +386,13 @@
             .mobile-br {
                 display: inline; /* 모바일에서만 줄바꿈 활성화 */
             }
+            
+            /* 텍스트 아트 모바일 최적화 */
+            .post-content pre {
+                font-size: 10px; 
+                line-height: 1.2;
+            }
+
             /* 갤러리 모달 모바일 버튼 최적화 */
             #btn-prev, #btn-next {
                 font-size: 24px !important;
@@ -379,14 +405,23 @@
                 right: 5px !important;
             }
             
-            /* ====== 모바일 전용 게시판 레이아웃 (카드형) ====== */
-            #comments-table {
+            /* ====== 모바일 전용 게시판 레이아웃 (카드형) 깨짐 방지 ====== */
+            #comments-table, #comments-table tbody {
+                display: block; /* 테이블을 완전히 블록으로 변경 */
+                width: 100%;
                 border: none;
                 background-color: transparent;
             }
             #comments-table tr:first-child {
                 display: none !important; /* 모바일에서는 '작성자 | 내용' 헤더 숨김 */
             }
+            
+            /* tr 요소를 block으로 변경하여 화면 깨짐 완벽 방지 */
+            #comments-table tr.theme-a-only { display: block; }
+            body.theme-b #comments-table tr.theme-a-only { display: none; }
+            #comments-table tr.theme-b-only { display: none; }
+            body.theme-b #comments-table tr.theme-b-only { display: block; }
+
             #comments-table td {
                 display: block;
                 width: 100% !important;
@@ -466,15 +501,16 @@
         }
 
         /* === 테마 B (내용 전환용 클래스 유지, 디자인 통일) === */
-        .theme-a-only { display: block; }
-        .theme-b-only { display: none; }
-        body.theme-b .theme-a-only { display: none; }
-        body.theme-b .theme-b-only { display: block; }
-        
+        /* PC화면 기준 전역 속성 */
         tr.theme-a-only { display: table-row; }
         tr.theme-b-only { display: none; }
         body.theme-b tr.theme-a-only { display: none; }
         body.theme-b tr.theme-b-only { display: table-row; }
+
+        .theme-a-only:not(tr) { display: block; }
+        .theme-b-only:not(tr) { display: none; }
+        body.theme-b .theme-a-only:not(tr) { display: none; }
+        body.theme-b .theme-b-only:not(tr) { display: block; }
 
         /* === 초기 접속 게이트 화면 === */
         #gate-screen {
